@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slidescovery – ユーザーマニュアル</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #121212;
+      --card-bg: #1f1f1f;
+      --accent-1: #1dd6ff;
+      --accent-2: #4cff88;
+      --txt-main: #e5e5e5;
+      --txt-sub: #b0b0b0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-dark);
+      color: var(--txt-main);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .lang-switcher {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10;
+    }
+    .lang-switcher button {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--txt-main);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .lang-switcher button:hover { background: rgba(255,255,255,0.2); }
+    .lang-switcher button.active {
+      background: var(--accent-1);
+      color: var(--bg-dark);
+      font-weight: bold;
+    }
+    .hero {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(29,214,255,0.35) 0%, rgba(76,255,136,0.35) 100%), var(--card-bg);
+      text-align: center;
+      padding: 3rem 1rem 4rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero:before {
+      content: "";
+      position: absolute;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(circle at 30% -10%, rgba(76,255,136,0.2), transparent 65%), radial-gradient(circle at 70% 110%, rgba(29,214,255,0.2), transparent 65%);
+      top: 0;left: 0;
+      transform: translate(-10%,-10%);
+      pointer-events:none;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin:0;
+    }
+    .tagline { color: var(--txt-sub); margin-top: .5rem; }
+    main {
+      width: min(960px, 92%);
+      margin: -2rem auto 3rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem 2rem 3rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,.5);
+    }
+    section { margin-bottom: 3rem; }
+    section:last-child { margin-bottom: 0; }
+    h2 {
+      font-size: 1.9rem;
+      margin: 0 0 1.5rem;
+      font-weight: 700;
+      color: var(--accent-1);
+      border-bottom: 2px solid var(--accent-1);
+      padding-bottom: .4rem;
+    }
+    h3 {
+      font-size: 1.3rem;
+      color: var(--accent-2);
+      margin: 2rem 0 .8rem;
+      display: flex;align-items:center;
+      gap: .4rem;
+    }
+    ul,ol { padding-left: 1.2rem; }
+    ul li, ol li { margin-bottom:.6rem; }
+    ul li { list-style: "🞄  "; }
+    .feature-card {
+      background: #262626;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,.35);
+      margin-bottom: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td { padding: .8rem .6rem; text-align: left; }
+    th { background: var(--accent-1); color: #000; font-weight: 700; }
+    tr:nth-child(even) { background: rgba(255,255,255,0.04); }
+    tr:nth-child(odd)  { background: rgba(255,255,255,0.08); }
+    footer {
+      text-align:center;
+      padding: 1rem 0 2rem;
+      color: var(--txt-sub);
+    }
+
+    /* Language Display Logic */
+    .lang-en, .lang-ja { display: inline; } /* Default display */
+    body.display-ja .lang-en { display: none; }
+    body.display-en .lang-ja { display: none; }
+
+    @media (max-width: 600px){
+      .logo{font-size:2.2rem;}
+      h2{font-size:1.6rem;}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="lang-switcher">
+      <button id="btn-ja">日本語</button>
+      <button id="btn-en">English</button>
+    </div>
+    <h1 class="logo"><img src="slidescovery.png" alt="slidescovery logo" />Slidescovery</h1>
+    <p class="tagline">
+      <span class="lang-ja">まだ見ぬ名作と出会う、発見型スライドショー</span>
+      <span class="lang-en">Discover masterpieces you haven't seen yet, a discovery-style slideshow.</span>
+    </p>
+  </header>
+
+  <main>
+    <section id="intro">
+      <h2>
+        <span class="lang-ja">Slidescovery とは？</span>
+        <span class="lang-en">What is Slidescovery?</span>
+      </h2>
+      <img src="slidescovery_sample.png">
+      <p>
+        <span class="lang-ja">Slidescovery は、膨大な画像を <strong>スライドショー</strong> で軽快に閲覧しながら、<br><em>お気に入り仕分け・PNG メタ検索</em> がサクサク行えるデスクトップアプリです。</span>
+        <span class="lang-en">Slidescovery is a desktop application that allows you to browse a large number of images in a <strong>slideshow</strong>, <br>and easily <em>sort your favorites and search for PNG metadata</em>.</span>
+      </p>
+    </section>
+
+    <section id="features">
+      <h2>
+        <span class="lang-ja">主な機能</span>
+        <span class="lang-en">Main Features</span>
+      </h2>
+      <div class="feature-card">
+        <h3>🖼️ <span class="lang-ja">直感的なスライドショー</span><span class="lang-en">Intuitive Slideshow</span></h3>
+        <ul>
+          <li><span class="lang-ja">矢印キー / ホイールでパパっと移動</span><span class="lang-en">Move quickly with arrow keys / wheel</span></li>
+          <li><span class="lang-ja">一時停止・再開は <kbd>p</kbd> でワンタップ</span><span class="lang-en">Pause/resume with a single tap of <kbd>p</kbd></span></li>
+          <li><span class="lang-ja">スライド間隔を 0.5〜60 秒で自由設定</span><span class="lang-en">Freely set the slide interval from 0.5 to 60 seconds</span></li>
+        </ul>
+      </div>
+      <div class="feature-card">
+        <h3>🔍 <span class="lang-ja">PNG メタデータ検索</span><span class="lang-en">PNG Metadata Search</span></h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/GXBLoD4p82s?si=FWwXj7gbLJgRZ7HW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <ul>
+          <li><span class="lang-ja">AI 生成画像の <code>prompt</code> などをリアルタイム表示</span><span class="lang-en">Real-time display of <code>prompt</code> for AI-generated images</span></li>
+          <li><span class="lang-ja">複数キーワード AND 検索 &amp; 自動スキップ</span><span class="lang-en">Multi-keyword AND search &amp; auto-skip</span></li>
+        </ul>
+      </div>
+      <div class="feature-card">
+        <h3>📁 <span class="lang-ja">スマートフォルダナビ</span><span class="lang-en">Smart Folder Navigation</span></h3>
+        <ul>
+          <li><span class="lang-ja">ツリービュー折りたたみで画面を広々活用</span><span class="lang-en">Utilize the screen widely by collapsing the tree view</span></li>
+          <li><span class="lang-ja">ドラッグ＆ドロップで即対象フォルダを登録</span><span class="lang-en">Register the target folder immediately by drag & drop</span></li>
+        </ul>
+      </div>
+      <div class="feature-card">
+        <h3>✨ <span class="lang-ja">画像仕分けワンクリック</span><span class="lang-en">One-click Image Sorting</span></h3>
+        <ul>
+          <li><span class="lang-ja">♥ お気に入り / ★ いいね / 🗑 ゴミ箱 の 3 ルートへ即移動</span><span class="lang-en">Move to 3 routes immediately: ♥ Favorites / ★ Likes / 🗑 Trash</span></li>
+          <li><span class="lang-ja">誤削除防止の確認ダイアログ (ON/OFF 可)</span><span class="lang-en">Confirmation dialog to prevent accidental deletion (ON/OFF available)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="howto">
+      <h2>
+        <span class="lang-ja">使い方 (クイックスタート)</span>
+        <span class="lang-en">How to Use (Quick Start)</span>
+      </h2>
+      <ol>
+        <li><span class="lang-ja">初回起動で <strong>画像ソースフォルダ</strong> を選択</span><span class="lang-en">Select the <strong>image source folder</strong> on first startup</span></li>
+        <li><span class="lang-ja">スライドショー開始 → <strong>矢印キー / ホイール</strong> で移動</span><span class="lang-en">Start slideshow → Move with <strong>arrow keys / wheel</strong></span></li>
+        <li><span class="lang-ja">右上 ℹ️ で PNG 情報パネルを ON/OFF</span><span class="lang-en">Turn the PNG info panel ON/OFF with ℹ️ in the upper right</span></li>
+        <li><span class="lang-ja">検索バーへキーワード入力でハイライト表示 → 該当画像を高速ジャンプ（⚙️ メニューで「Skip to matching image」）をオンにしてください。デフォルトではオフになっています。）</span><span class="lang-en">Enter keywords in the search bar to highlight them → Jump to the corresponding image at high speed (Please turn on "Skip to matching image" in the ⚙️ menu. It is off by default.)</span></li>
+      </ol>
+    </section>
+
+    <section id="operations">
+      <h2>
+        <span class="lang-ja">4. 基本操作</span>
+        <span class="lang-en">4. Basic Operations</span>
+      </h2>
+      <table>
+        <thead>
+          <tr>
+            <th><span class="lang-ja">アクション</span><span class="lang-en">Action</span></th>
+            <th><span class="lang-ja">マウス / ボタン</span><span class="lang-en">Mouse / Button</span></th>
+            <th><span class="lang-ja">キーボード</span><span class="lang-en">Keyboard</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="lang-ja">次へ / 前へ</span><span class="lang-en">Next / Previous</span></td><td>⏭ / ⏮</td><td>→ / ←</td></tr>
+          <tr><td><span class="lang-ja">ランダム移動</span><span class="lang-en">Random Move</span></td><td>—</td><td>↓ / ↑</td></tr>
+          <tr><td><span class="lang-ja">一時停止 / 再開</span><span class="lang-en">Pause / Resume</span></td><td>⏸</td><td>P</td></tr>
+          <tr><td><span class="lang-ja">スライド間隔変更</span><span class="lang-en">Change Slide Interval</span></td><td>⚙️ → Set Interval</td><td>—</td></tr>
+          <tr><td><span class="lang-ja">フルスクリーン切替</span><span class="lang-en">Toggle Fullscreen</span></td><td><span class="lang-ja">画像をダブルクリック</span><span class="lang-en">Double-click the image</span></td><td>F11</td></tr>
+          <tr><td><span class="lang-ja">エクスプローラーで画像を確認</span><span class="lang-en">Show Image in Explorer</span></td><td><span class="lang-ja">画像を右クリック</span><span class="lang-en">Right-click the image</span></td><td>—</td></tr>
+          <tr><td><span class="lang-ja">エクスプローラーでフォルダを確認</span><span class="lang-en">Show Folder in Explorer</span></td><td><span class="lang-ja">フォルダを右クリック</span><span class="lang-en">Right-click the folder</span></td><td>—</td></tr>
+          <tr><td><span class="lang-ja">お気に入りへコピー</span><span class="lang-en">Copy to Favorites</span></td><td>♥</td><td>1</td></tr>
+          <tr><td><span class="lang-ja">いいねへコピー</span><span class="lang-en">Copy to Likes</span></td><td>★</td><td>2</td></tr>
+          <tr><td><span class="lang-ja">ゴミ箱へ移動</span><span class="lang-en">Move to Trash</span></td><td>🗑</td><td>Del</td></tr>
+          <tr><td><span class="lang-ja">情報ペイン表示</span><span class="lang-en">Show Info Pane</span></td><td>ℹ️</td><td>I</td></tr>
+          <tr><td><span class="lang-ja">ツリー折りたたみ</span><span class="lang-en">Collapse Tree</span></td><td>«</td><td>—</td></tr>
+          <tr><td><span class="lang-ja">終了</span><span class="lang-en">Exit</span></td><td>✕</td><td>Esc</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="license">
+      <h2><span class="lang-ja">ライセンス情報</span><span class="lang-en">License Information</span></h2>
+      <p><span class="lang-ja">このアプリケーションは、以下のオープンソースライブラリを使用しています。</span><span class="lang-en">This application uses the following open source libraries.</span></p>
+      <div class="feature-card">
+        <h3>PyQt6</h3>
+        <p><span class="lang-ja">ライセンス: GNU General Public License v3 (GPLv3)<br>Copyright © 2023 Riverbank Computing Limited<br>PyQt6のソースコードは<a href="https://www.riverbankcomputing.com/software/pyqt/" target="_blank" style="color: var(--accent-1);">こちら</a>から入手できます。</span><span class="lang-en">License: GNU General Public License v3 (GPLv3)<br>Copyright © 2023 Riverbank Computing Limited<br>The source code for PyQt6 is available <a href="https://www.riverbankcomputing.com/software/pyqt/" target="_blank" style="color: var(--accent-1);">here</a>.</span></p>
+      </div>
+      <div class="feature-card">
+        <h3>Pillow</h3>
+        <p><span class="lang-ja">ライセンス: HPND License<br>Copyright © 2010-2023 Alex Clark and contributors</span><span class="lang-en">License: HPND License<br>Copyright © 2010-2023 Alex Clark and contributors</span></p>
+      </div>
+      <div class="feature-card">
+        <h3>send2trash</h3>
+        <p><span class="lang-ja">ライセンス: BSD License<br>Copyright © 2012, Copyright 2009, 2010 by authors</span><span class="lang-en">License: BSD License<br>Copyright © 2012, Copyright 2009, 2010 by authors</span></p>
+      </div>
+      <p><span class="lang-ja">各ライブラリのライセンス条文の詳細は、アプリケーションに同梱のLICENSE.txtをご確認ください。</span><span class="lang-en">For details on the license terms of each library, please check the LICENSE.txt file included with the application.</span></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <span class="lang-ja">このプロジェクトはオープンソースです。開発は<a href="https://github.com/jogetu/slidescovery/" target="_blank" style="color: var(--accent-1);">GitHub</a>で行われています。</span>
+      <span class="lang-en">This project is open source. Development takes place on <a href="https://github.com/jogetu/slidescovery/" target="_blank" style="color: var(--accent-1);">GitHub</a>.</span>
+    </p>
+    <p>© 2025 Slidescovery Project – v1.0</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const jaBtn = document.getElementById('btn-ja');
+      const enBtn = document.getElementById('btn-en');
+      const body = document.body;
+
+      function setLanguage(lang) {
+        body.className = `display-${lang}`;
+        document.documentElement.lang = lang;
+
+        jaBtn.classList.toggle('active', lang === 'ja');
+        enBtn.classList.toggle('active', lang === 'en');
+      }
+
+      jaBtn.addEventListener('click', () => setLanguage('ja'));
+      enBtn.addEventListener('click', () => setLanguage('en'));
+
+      const userLang = navigator.language || navigator.userLanguage;
+      setLanguage(userLang.startsWith('en') ? 'en' : 'ja');
+    });
+  </script>
+</body>
+</html>
