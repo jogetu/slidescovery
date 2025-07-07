@@ -1,0 +1,59 @@
+Slidescovery プライバシー ポリシー / Privacy Policy
+最終更新日: 2025-07-06
+
+────────────────────────────────
+◆ 日本語
+────────────────────────────────
+1. 収集する情報
+Slidescovery はユーザーの個人情報 (氏名、メールアドレス、位置情報など)
+を一切収集・送信しません。
+
+2. ローカル保存
+アプリ設定 (スライドショー間隔、フォルダパス等) は
+お使いの PC のユーザーディレクトリ
+%APPDATA%\Slidescovery\ に JSON 形式で保存されます。
+外部サーバーへ送信されることはありません。
+
+3. 第三者サービス
+本アプリは外部の分析サービス・クラウド API・広告 SDK を利用しません。
+
+4. 子どものプライバシー
+13 歳未満の児童から個人情報を取得することはありません。
+
+5. 連絡先
+ご質問がありましたら下記メールまでご連絡ください。
+jogetu@gmail.com
+
+6. ポリシーの変更
+重要な変更がある場合は本ページを更新し、アプリの
+リリースノートでお知らせします。
+
+────────────────────────────────
+◆ English
+────────────────────────────────
+1. Information We Collect
+Slidescovery does **not** collect, store, or transmit any
+personally identifiable information (PII) such as name, e-mail
+address, or location.
+
+2. Local Storage
+All app settings (slideshow interval, folder paths, etc.)
+are stored locally on your PC in JSON format at:
+%APPDATA%\Slidescovery\
+No data is ever sent to external servers.
+
+3. Third-Party Services
+This app does **not** use analytics, cloud APIs, ad networks,
+or any other third-party services.
+
+4. Children’s Privacy
+Slidescovery does not knowingly collect personal information
+from children under 13.
+
+5. Contact Us
+If you have any questions, please contact:
+jogetu@gmail.com
+
+6. Changes to This Policy
+We will update this document and note the change in release
+notes if we ever make a material change.
